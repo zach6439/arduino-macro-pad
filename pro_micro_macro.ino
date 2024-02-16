@@ -117,5 +117,5 @@ void loop() {
 }
 
 void failsafe(){
-  for(;;){} // Just going to hang out here for awhile :D
+  for(;;){} // Failsafe loop
 }
