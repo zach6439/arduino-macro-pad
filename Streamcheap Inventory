@@ -1,0 +1,104 @@
+//https://www.makeuseof.com/tag/make-custom-shortcut-buttons-arduino/
+
+#include "Keyboard.h"
+
+int keys[] = {2,3,4,5,6,7,8,9}; //Defining pins for keys
+
+
+
+// use this option for OSX:
+char ctrlKey = KEY_LEFT_GUI;
+
+
+
+//Startup code, initializes all pins
+void setup() {
+  Keyboard.begin(); // setup keyboard
+  for (int i = 2; i < 10; ++i) {
+    // initilize pins
+    pinMode(i, INPUT_PULLUP);
+  }
+}
+
+// Checking button preses
+void loop() {
+  for (int i = 2; i < 10; ++i) {
+    // check buttons
+    if (readButton(i)) {
+      doAction(i);
+    }
+  }
+}
+boolean readButton(int pin) {
+  // check and debounce buttons
+  if (digitalRead(pin) == LOW) {
+    delay(10);
+    if (digitalRead(pin) == LOW) {
+      return true;
+    }
+  }
+  return false;
+}
+void doAction(int pin) {
+  // perform tasks
+  switch (pin) {
+
+    case 2:
+      Keyboard.press(KEY_TAB);
+      Keyboard.release(KEY_TAB);
+      delay(50);
+      Keyboard.println("ZM");
+      delay(50);
+      Keyboard.press(KEY_RETURN);
+      Keyboard.release(KEY_RETURN);
+      delay(50);
+      Keyboard.press(KEY_ESC);
+      Keyboard.release(KEY_ESC);
+      delay(50);
+      break;
+
+    case 3:
+      Keyboard.press(KEY_F14);
+      delay(50);
+      Keyboard.release(KEY_F14);
+      delay(50);
+      break;
+
+    case 4:
+      Keyboard.press(KEY_F15);
+      Keyboard.release(KEY_F15);
+      delay(50);
+      break;
+
+    case 5:
+      Keyboard.press(KEY_F16);
+      Keyboard.release(KEY_F16);
+      delay(50);
+      break;
+
+    case 6:
+      Keyboard.press(KEY_F17);
+      Keyboard.release(KEY_F17);
+      delay(50);
+      break;
+
+    case 7:
+      Keyboard.press(KEY_F18);
+      Keyboard.release(KEY_F18);
+      delay(50);
+      break;
+
+    case 8:
+      Keyboard.press(KEY_F19);
+      Keyboard.release(KEY_F19);
+      delay(50);  
+      break;
+
+    case 9:
+      Keyboard.press(KEY_F20);
+      Keyboard.release(KEY_F20);
+      delay(50);
+      break;
+
+  }
+}

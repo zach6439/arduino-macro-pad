@@ -23,10 +23,10 @@
  * THE SOFTWARE.
  *
  */
-
+// ---------------------------------
 
 #include <Keyboard.h>
-// ---------------------------------
+
 // Key definitions
 #define BUTTON_KEY1 KEY_F13
 #define BUTTON_KEY2 KEY_F14
